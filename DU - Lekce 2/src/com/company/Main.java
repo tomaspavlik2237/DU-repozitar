@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args)
     {
         // Pro predmet, kde student jeste nemel zkousku napiseme 0
-        Student student1 = new Student("Tomas", "Pavlik", "MS4", LocalDate.of(1998, 06, 18), 4,
+        Student student1 = new Student("Tomas", "Pavlik", "MS4", LocalDate.of(1998, 06, 18), 1,
                 2, 1, 1);
 
         Student student2 = new Student("Daniel", "Skvaril", "MS4", LocalDate.of(1998, 9, 18), 4,
