@@ -1,6 +1,7 @@
 package com.company;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 
 public class Student
 {
@@ -46,7 +47,7 @@ public class Student
 
         else
         {
-            return "ma zkousky zasebou.";
+            return "ma zkousky za sebou.";
         }
     }
 

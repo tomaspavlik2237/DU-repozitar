@@ -28,6 +28,7 @@ public class Main {
 
         System.out.println(student4.getJmenoStudenta() + " " + student4.getPrijmeniStudenta() + " " + student4.Maturoval());
 
+
         ArrayList listStudentu = new ArrayList();
 
         listStudentu.add(student1);
