@@ -1,10 +1,12 @@
 package com.company;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
 
     private static final String INPUT_FILE = "stateVat.txt";
+    private static final String OUTPUT_FILE = "vat-over-20.txt";
 
     public static void main(String[] args)
     {
@@ -16,9 +18,8 @@ public class Main {
         for (int i = 0; i < readWriteFile.size(); i++)
         {
             State state = readWriteFile.getState(i);
-            System.out.println(state);
+            //System.out.println(state);
         }
-
 
         //2.
         for (int i = 0; i < readWriteFile.size(); i++)
@@ -29,8 +30,28 @@ public class Main {
 
             if(fullVat > 20 && !specialVat)
             {
-                System.out.println(state);
+                readWriteFile.stateList.add(state);
+                //System.out.println(state);
+            }
+
+            else
+            {
+                readWriteFile.smallerThanTwenty.add(state.getStateShortcut());
             }
         }
+
+        //3.
+        Collections.sort(readWriteFile.stateList);
+
+        for (State state : readWriteFile.stateList)
+        {
+            System.out.println(state);
+        }
+
+        //4.
+        System.out.println("=============================");
+        System.out.println("Rate VAT 20 % or lower or using special rate: " + readWriteFile.smallerThanTwenty);
+
+        readWriteFile.exportToFile(OUTPUT_FILE);
     }
 }

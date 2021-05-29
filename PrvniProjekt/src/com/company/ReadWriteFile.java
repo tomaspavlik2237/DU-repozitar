@@ -6,31 +6,33 @@ import java.util.Scanner;
 
 public class ReadWriteFile
 {
+    ArrayList<State> allStatesList = new ArrayList<>();
     ArrayList<State> stateList = new ArrayList<>();
+    ArrayList<String> smallerThanTwenty = new ArrayList<>();
 
     public void addStateToList(State state)
     {
-        stateList.add(state);
+        allStatesList.add(state);
     }
 
     public void removeStateFromList(State state)
     {
-        stateList.remove(state);
+        allStatesList.remove(state);
     }
 
     public int size()
     {
-        return stateList.size();
+        return allStatesList.size();
     }
 
-    public ArrayList<State> getStateList()
+    public ArrayList<State> getAllStatesList()
     {
-        return stateList;
+        return allStatesList;
     }
 
     public State getState(int index)
     {
-        return stateList.get(index);
+        return allStatesList.get(index);
     }
 
     public void importFromFile(String file)
@@ -58,8 +60,11 @@ public class ReadWriteFile
         {
             for(State state : stateList)
             {
-                writer.println(state.prepareToWrite());
+                writer.println(state);
             }
+            writer.println("=============================");
+            writer.println("Rate VAT 20 % or lower or using special rate: " + smallerThanTwenty);
+
         } catch (IOException e)
         {
             System.err.println("Error in writing " + file + e.getLocalizedMessage());

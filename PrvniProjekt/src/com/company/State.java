@@ -1,6 +1,6 @@
 package com.company;
 
-public class State
+public class State implements Comparable<State>
 {
     private static final String DELIMETER = "\t";
 
@@ -33,11 +33,6 @@ public class State
 
             return new State(stateShortcut, stateName, fullVat, reducedVat, specialVat);
         }
-    }
-
-    public String prepareToWrite()
-    {
-        return getStateShortcut() + DELIMETER + getStateName() + DELIMETER + getFullVat() + DELIMETER + getReducedVat() + DELIMETER + isSpecialVat();
     }
 
     public String getStateShortcut() {
@@ -84,5 +79,18 @@ public class State
     public String toString()
     {
         return getStateName() + " (" + getStateShortcut() + ") " + ": " + getFullVat() + " %";
+    }
+
+    @Override
+    public int compareTo(State stateVat)
+    {
+        if(this.getFullVat() > stateVat.getFullVat())
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
     }
 }
