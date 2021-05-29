@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Main {
 
@@ -53,5 +54,35 @@ public class Main {
         System.out.println("Rate VAT 20 % or lower or using special rate: " + readWriteFile.smallerThanTwenty);
 
         readWriteFile.exportToFile(OUTPUT_FILE);
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter VAT: ");
+
+        String enteredVat = scanner.nextLine();
+
+        if(enteredVat.equals(""))
+        {
+            enteredVat = "20";
+            for(State state : readWriteFile.allStatesList)
+            {
+                if(state.getFullVat() > 20)
+                System.out.println(state);
+                readWriteFile.customStateVatList.add(state);
+            }
+        }
+        else
+        {
+            for(State state : readWriteFile.allStatesList)
+            {
+                if(state.getFullVat() > Integer.parseInt(enteredVat))
+                {
+                    System.out.println(state);
+                    readWriteFile.customStateVatList.add(state);
+                }
+            }
+        }
+        readWriteFile.exportCustomVatToFile(enteredVat + ".txt");
+
     }
 }

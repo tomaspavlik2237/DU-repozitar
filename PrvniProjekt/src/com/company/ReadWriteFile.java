@@ -9,6 +9,7 @@ public class ReadWriteFile
     ArrayList<State> allStatesList = new ArrayList<>();
     ArrayList<State> stateList = new ArrayList<>();
     ArrayList<String> smallerThanTwenty = new ArrayList<>();
+    ArrayList<State> customStateVatList = new ArrayList<>();
 
     public void addStateToList(State state)
     {
@@ -70,4 +71,19 @@ public class ReadWriteFile
             System.err.println("Error in writing " + file + e.getLocalizedMessage());
         }
     }
+
+    public void exportCustomVatToFile(String file)
+{
+    try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(file))))
+    {
+        for(State state : customStateVatList)
+        {
+            writer.println(state);
+        }
+
+    } catch (IOException e)
+    {
+        System.err.println("Error in writing " + file + e.getLocalizedMessage());
+    }
+}
 }
