@@ -1,0 +1,47 @@
+CREATE TABLE FamousVilla
+(
+  id integer,
+  name varchar(255),
+  originalOwner varchar(255),
+  architect varchar(255),
+  constructionStarted smallint,
+  constructionCompleted smallint,
+  architecturalStyle varchar(255),
+  address varchar(255)
+);
+
+INSERT INTO FamousVilla VALUES
+(1, 'Bassova vila', 'Elsa a Bedřich Bassovi', 'Zikmund Kerekes', 1932, 1932, 'funkcionalismus', 'Lipová 22, čp. 234, Brno 1-Pisárky'),
+(2, 'Chleborádova vila', 'Ernst Gürtler', 'Germano Wanderley', 1891, 1891, 'neorenesance', 'Smetanova 14, čp. 756, Brno 1-Veveří'),
+(3, 'Gutmannova vila', 'Wilhelm Gutmann', 'Ernst Wiesner', 1919, 1920, 'purismus', 'Údolní 58, čp. 545, Brno 1-Veveří'),
+(4, 'Haasova vila', 'Gustav Haas', 'Ernst Wiesner', 1928, 1930, 'funkcionalismus', 'Lipová 43, čp. 739, Brno 1-Pisárky'),
+(5, 'Jurkovičova vila', 'Dušan Jurkovič', 'Dušan Jurkovič', 1905, 1906, 'secese', 'Jana Nečase 2, čp. 335, Brno 2-Žabovřesky'),
+(6, 'Kudelův rodinný dům', 'PhDr. Josef Kudela', 'Jan Víšek', 1926, 1927, 'funkcionalismus', 'Havlíčkova 36, čp. 145, Brno 1-Stránice'),
+(7, 'Löw-Beerova vila', 'Moritz Fuhrmann', 'Rudolf Baumfeld', 1903, 1904, 'secese', 'Drobného 22, čp. 297, Brno 4-Černá Pole'),
+(8, 'Rodinný dům Herminy Weiglové', 'Hermine Weiglová', 'Ernst Wiesner', 1934, 1934, 'funkcionalismus', 'Kalvodova 2, čp. 1210, Brno 1-Pisárky'),
+(9, 'Vila Tugendhat', 'Grete a Fritz Tugendhatovi', 'Ludwig Mies van der Rohe', 1928, 1930, 'funkcionalismus', 'Černopolní 45, čp. 620, Brno 4-Černá Pole');
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+SELECT name, address FROM FamousVilla WHERE architecturalStyle = 'funkcionalismus' AND (constructionCompleted - constructionStarted) <= 1;
+
+SELECT name FROM FamousVilla WHERE address LIKE '%Pisárky%';
+
+INSERT INTO FamousVilla VALUES
+(10, 'Tionova vila', 'Frank Hoffmann', 'Alois Paar', 1932, 1933, 'funkcionalismus', 'Nitransk8 232, čp. 1234, Praha 5-Zachar'),
+(11, 'Luksova vila', 'George Beli', 'Zikmund Kerekes', 1952, 1962, 'purimus', 'Braunerova 222, čp. 2534, Brno 1-Slovan');
+
+SELECT * FROM FamousVilla WHERE id = 10;
+SELECT * FROM FamousVilla WHERE id = 11;
+
+UPDATE FamousVilla SET architect = 'Norbert Schlesinger', constructionCompleted = 1935 WHERE id = 7;
+SELECT * FROM FamousVilla WHERE id = 7;
+
+DELETE FROM FamousVilla WHERE architecturalStyle = 'secese' OR architecturalStyle = 'purismus';
+
+INSERT INTO FamousVilla VALUES
+(12, '', '', 'Richard Načrtl', 2021, NULL, 'moderna', 'Karlovská 624, Dolní Kounice');
+
+SELECT * FROM FamousVilla

@@ -4,18 +4,14 @@ public class Vidlicka
 {
     private boolean jePouzivana = false;
 
-    public synchronized void lock() throws InterruptedException {
-        while (jePouzivana)
-        {
-            wait();
-        }
+    public void zvednout()
+    {
         jePouzivana = true;
     }
 
-    public synchronized void unlock()
+    public void polozit()
     {
         jePouzivana = false;
-        notify();
     }
 
     public boolean jePouzivana()

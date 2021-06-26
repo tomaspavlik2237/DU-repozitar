@@ -5,7 +5,7 @@ public class VlaknoFilozof extends Thread
     private static Integer celkemSnezenychPorci = 0;
 
     private Integer snezenePorce = 0;
-    private Integer porceKeSnezeni = 1000;
+    private Integer porceKeSnezeni = 10000;
 
     private Vidlicka levaVidlicka;
     private Vidlicka pravaVidlicka;
@@ -22,30 +22,23 @@ public class VlaknoFilozof extends Thread
 
     public void run()
     {
-        try {
-            levaVidlicka.lock();
-            pravaVidlicka.lock();
-            while(porceKeSnezeni > 0)
+        if(!levaVidlicka.jePouzivana() && !pravaVidlicka.jePouzivana()) {
+            while (porceKeSnezeni > 0)
             {
-                if(levaVidlicka.jePouzivana() && pravaVidlicka.jePouzivana())
-                {
-                    synchronized (synchronizace)
-                    {
-                        porceKeSnezeni--;
-                        snezenePorce++;
-                        celkemSnezenychPorci++;
-                    }
+                levaVidlicka.zvednout();
+                pravaVidlicka.zvednout();
+
+                synchronized (synchronizace) {
+                    porceKeSnezeni--;
+                    snezenePorce++;
+                    celkemSnezenychPorci++;
                     System.out.println("Filozof " + getName() + " snedl " + snezenePorce + " porci. Zbyva mu snist jeste " + porceKeSnezeni + " porci.");
                 }
+                levaVidlicka.polozit();
+                pravaVidlicka.polozit();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println(celkemSnezenychPorci);
         }
-        finally {
-            levaVidlicka.unlock();
-            pravaVidlicka.unlock();
-        }
-
-        System.out.println(celkemSnezenychPorci);
     }
+    // System.out.println("Filozof " + getName() + " snedl " + snezenePorce + " porci. Zbyva mu snist jeste " + porceKeSnezeni + " porci.");
 }
