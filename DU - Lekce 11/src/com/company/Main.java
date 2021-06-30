@@ -8,15 +8,15 @@ public class Main {
     {
         Methods methods = new Methods();
 
-        System.out.println(methods.loadItemById(9));
+//        System.out.println(methods.loadItemById(13));
 
-        methods.deleteAllOutOfStockItems();
+//        methods.deleteAllOutOfStockItems();
 
-        System.out.println(methods.loadAllAvailableItems());
+//        System.out.println(methods.loadAllAvailableItems());
 
-        Item item = new Item(21, "222", "555", "'Zkouska'", "'popis objektu'", 88, BigDecimal.valueOf(5477));
-        methods.saveItem(item);
+//        Item item = new Item("222", "254732", "'Ventil 5/2'", "'Hydraulicky ventil 5 poloh a 2 vystupy'", 1, BigDecimal.valueOf(80000));
+//        methods.saveItem(item);
 
-        methods.updatePrice(2, BigDecimal.valueOf(0));
+//        methods.updatePrice(1, BigDecimal.valueOf(5000));
     }
 }

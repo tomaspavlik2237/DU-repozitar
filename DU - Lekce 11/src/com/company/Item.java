@@ -24,8 +24,8 @@ public class Item
 
     }
 
-    public Item(Integer id, String partNo, String serialNo, String name, String description, Integer numberInStock, BigDecimal price) {
-        this.id = id;
+    public Item(String partNo, String serialNo, String name, String description, Integer numberInStock, BigDecimal price)
+    {
         this.partNo = partNo;
         this.serialNo = serialNo;
         this.name = name;

@@ -8,16 +8,19 @@ import java.util.List;
 
 public class Methods
 {
+    private static final String DATABASE_PATH = "jdbc:mysql://localhost:3306/sys";
+    private static final String DATABASE_USER_NAME = "root";
+    private static final String DATABASE_PASSWORD = "password12341";
+
     Item loadItemById(Integer id)
     {
         Item item = new Item();
         try
         {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "tomaspavlik123");
+            Connection connection = DriverManager.getConnection(DATABASE_PATH, DATABASE_USER_NAME, DATABASE_PASSWORD);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM item WHERE id = " + id);
             resultSet.next();
-
             item.setId(resultSet.getInt("id"));
             item.setPartNo(resultSet.getString("partNo"));
             item.setSerialNo(resultSet.getString("serialNo"));
@@ -39,7 +42,7 @@ public class Methods
     {
         try
         {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "tomaspavlik123");
+            Connection connection = DriverManager.getConnection(DATABASE_PATH, DATABASE_USER_NAME, DATABASE_PASSWORD);
             Statement statement = connection.createStatement();
             statement.executeUpdate("DELETE FROM item WHERE numberInStock = 0");
             connection.close();
@@ -56,7 +59,7 @@ public class Methods
 
         try
         {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "tomaspavlik123");
+            Connection connection = DriverManager.getConnection(DATABASE_PATH, DATABASE_USER_NAME, DATABASE_PASSWORD);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM item WHERE numberInStock > 0");
 
@@ -85,7 +88,7 @@ public class Methods
     {
         try
         {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "tomaspavlik123");
+            Connection connection = DriverManager.getConnection(DATABASE_PATH, DATABASE_USER_NAME, DATABASE_PASSWORD);
             Statement statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO item VALUES (" + item.getId() + ", " + item.getPartNo() + ", " + item.getSerialNo() + ", " + item.getName()
             + ", " + item.getDescription() + ", " + item.getNumberInStock() + ", " + item.getPrice() + ")");
@@ -101,7 +104,7 @@ public class Methods
     {
         try
         {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "tomaspavlik123");
+            Connection connection = DriverManager.getConnection(DATABASE_PATH, DATABASE_USER_NAME, DATABASE_PASSWORD);
             Statement statement = connection.createStatement();
             statement.executeUpdate("UPDATE item SET price = " + newPrice + " WHERE id = " + id);
             connection.close();
