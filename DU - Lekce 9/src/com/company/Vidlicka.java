@@ -1,15 +1,17 @@
 package com.company;
 
+import java.util.concurrent.Semaphore;
+
 public class Vidlicka
 {
     private boolean jePouzivana = false;
 
-    public void zvednout()
+    public synchronized void zvednout()
     {
         jePouzivana = true;
     }
 
-    public void polozit()
+    public synchronized void polozit()
     {
         jePouzivana = false;
     }
