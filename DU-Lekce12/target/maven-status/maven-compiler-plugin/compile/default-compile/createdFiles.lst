@@ -1,0 +1,5 @@
+com\engeto\restapi\demorestapi\DemoRestapiApplication.class
+com\engeto\restapi\demorestapi\StudentDomain.class
+com\engeto\restapi\demorestapi\DBController.class
+com\engeto\restapi\demorestapi\Student.class
+com\engeto\restapi\demorestapi\MainController.class
